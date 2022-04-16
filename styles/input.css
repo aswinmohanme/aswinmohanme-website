@@ -15,7 +15,7 @@
   h2,
   h3,
   h4 {
-    @apply mb-2 block border-yellow-400 bg-yellow-200 px-2 uppercase;
+    @apply mb-2 block bg-gray-200 px-2 uppercase;
   }
 
   h1,
@@ -23,11 +23,16 @@
     @apply mt-12;
   }
 
-  h3 {
+  h3,
+  h4 {
     @apply mt-8;
   }
 
   h4 {
-    @apply mt-4 inline-block;
+    @apply inline-block;
+  }
+
+  code {
+    @apply rounded-md border border-gray-400 px-2 font-sans;
   }
 }

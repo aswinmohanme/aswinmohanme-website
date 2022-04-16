@@ -84,7 +84,6 @@
       with great just enough abstractions and great developer experience.
     </p>
 
-    <br />
     <h4>Elixir Phoenix</h4>
     <p>
       Elixir and Phoenix is the best part about LiveView. Elixir is a recent
@@ -94,7 +93,6 @@
       performant even with small system configurations, and that sub 10ms
       response time is a major factor why LiveView has a usable experience.
     </p>
-    <br />
     <h4>Testing</h4>
     <p>
       The second best thing I loved about LiveView is testing, especially
@@ -104,7 +102,6 @@
       instantiating a browser. It handles clicks, redirects, and form events.
       This leads to fast and stable tests.
     </p>
-    <br />
     <h4>SPA without SPA</h4>
     <p>
       This is the major selling point of LiveView and it holds that promise
@@ -113,6 +110,22 @@
       your app acts with almost the same performance and UX of a well built SPA
       without the need for API interfaces. You specify the data in the templates
       and it does the rest.
+    </p>
+    <h4>Javascript Hooks</h4>
+    <p>
+      Interop with Javascript is done through hooks. They enable you to "hook"
+      into various lifecycle events of the LiveView process. Unlike other
+      frameworks where escape hatches are an afterthought, hooks are well
+      designed. For IndiePaper I made a text editor using TipTap and was able to
+      convert the entire page from Vue to hooks with the hooks version being
+      more capable and better.
+    </p>
+    <h4>Performance</h4>
+    <p>
+      With the new <code>live_session</code> helper, we can bundle together
+      liveviews and the navigation happens through the same websocket. This is
+      insanely fast. Page navigations happen in under 100ms using from India
+      with the server in US.
     </p>
   </body>
 </html>
