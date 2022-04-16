@@ -1,3 +1,15 @@
 {
-    "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/posts/superfast-vercel-liveview-fly",
+      "destination": "/superfast-liveview",
+      "permanent": true
+    },
+    {
+      "source": "/posts/superfast-vercel-liveview-fly/",
+      "destination": "/superfast-liveview",
+      "permanent": true
+    }
+  ]
 }

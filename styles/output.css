@@ -123,7 +123,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -498,6 +498,20 @@ code {
   font-family: Avenir, Arial, system-ui, sans-serif;
 }
 
+pre {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  white-space: pre-wrap;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 *, ::before, ::after {
   --tw-translate-x: 0;
   --tw-translate-y: 0;
@@ -543,8 +557,16 @@ code {
   --tw-backdrop-sepia:  ;
 }
 
+.static {
+  position: static;
+}
+
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
 }
 
 .mt-1 {

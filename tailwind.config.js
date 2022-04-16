@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['Avenir', 'Arial', 'system-ui', 'sans-serif'],
+        'mono': ['monospace']
       },
     },
   },
