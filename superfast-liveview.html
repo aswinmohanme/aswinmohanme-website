@@ -19,77 +19,80 @@
       <a href="/">back to home</a>
     </p>
     <article>
-      <h1>Superfast Webapps using NextJS, Vercel, LiveView and Fly.io</h1>
-      <p>
-        Making fast web apps is hard but a tremendous
-        <a
-          href="https://www.businesswire.com/news/home/20180724005488/en/Slow-Websites-Are-Silent-Killers-for-Businesses"
-          >business oppurtunity</a
-        >. It's also the right thing to do. In this blog post, I'll explain how
-        <a href="https://indiepaper.me">IndiePaper</a> achieves decent
-        performance with NextJS, and Phoenix hosted on Vercel and Fly.io
-        respectively. Big thanks to Plausible.io for pointing out the
-        <a href="https://github.com/plausible/analytics/discussions/1593">way</a
-        >.
-      </p>
-      <br />
-      <p>
-        Making a fast web app is complex, It requires tuning a lot of moving
-        parts. The technology that you chose has a measurable impact on
-        performance. We chose these technologies because they optimize for and
-        care about performance.
-      </p>
-      <h4>NextJS</h4>
-      <p>
-        It's a framework based on React, geared towards static and dynamic web
-        apps. It has a lot of sane defaults and can get you a halfway decent SPA
-        experience out of the box. It has a couple of features like optimized
-        images, preloading routes, chunked downloads and dead code elimination
-        that makes the user experience insanely fast.
-      </p>
-      <h4>Vercel</h4>
-      <p>
-        They are the company behind NextJS, providing great support for hosting
-        and distributing NextJS apps. They deploy your static site via their
-        global CDN close to your users. With NextJS and Vercel people can see
-        sub 50ms response times for your website.
-      </p>
-      <h4>Phoenix LiveView</h4>
-      <p>
-        Phoenix is the premier web framework for Elixir. It's fast, with
-        microsecond response times, has an intuitive programming model and is
-        the best fit for making dynamic server-side apps. LiveView takes this up
-        one notch by making the data transfer over a persistent WebSocket
-        connection which gives an SPA like experience.
-      </p>
-      <h4>Fly.io</h4>
-      <p>
-        Hosting static sites closer to people using CDNs is kind of easy. But
-        doing the same for dynamic server-side web apps is still a hard problem.
-        Fly.io streamlines running your apps close to people. It supports
-        databases, work well with Phoenix, has library support for global
-        databases and is comparatively cheap. Phoenix LiveView on Fly.io is a
-        killer combination, and with enough regions, it's indistinguishable from
-        a Single Page App.
-      </p>
-      <h2>Separating Static and Dynamic</h2>
-      <p>
-        I implemented this setup, not because of the obvious performance
-        benefits, but because I wanted to separate static pages like the home
-        page, privacy policy and dynamic content from the dynamic author
-        dashboard. Initially, all pages including the homepage were served from
-        the Phoenix app itself. This meant waste of server resources, pages
-        couldn't be reliably cached, and every small grammatical change polluted
-        the main application repo and needed a server restart.
-      </p>
-      <br />
-      <p>
-        I was fine with this until I wanted a blog, and that too as a
-        subdirectory for SEO reasons. That's when I decided to move the static
-        pages to a NextJS app that can be statically generated and serve the
-        remaining pages from the Phoenix app. That way we get the speed of
-        static sites, and the interactivity of Phoenix LiveView.
-      </p>
+      <section>
+        <h1>Superfast Webapps using NextJS, Vercel, LiveView and Fly.io</h1>
+        <p>
+          Making fast web apps is hard but a tremendous
+          <a
+            href="https://www.businesswire.com/news/home/20180724005488/en/Slow-Websites-Are-Silent-Killers-for-Businesses"
+            >business oppurtunity</a
+          >. It's also the right thing to do. In this blog post, I'll explain
+          how <a href="https://indiepaper.me">IndiePaper</a> achieves decent
+          performance with NextJS, and Phoenix hosted on Vercel and Fly.io
+          respectively. Big thanks to Plausible.io for pointing out the
+          <a href="https://github.com/plausible/analytics/discussions/1593"
+            >way</a
+          >.
+        </p>
+        <br />
+        <p>
+          Making a fast web app is complex, It requires tuning a lot of moving
+          parts. The technology that you chose has a measurable impact on
+          performance. We chose these technologies because they optimize for and
+          care about performance.
+        </p>
+        <h4>NextJS</h4>
+        <p>
+          It's a framework based on React, geared towards static and dynamic web
+          apps. It has a lot of sane defaults and can get you a halfway decent
+          SPA experience out of the box. It has a couple of features like
+          optimized images, preloading routes, chunked downloads and dead code
+          elimination that makes the user experience insanely fast.
+        </p>
+        <h4>Vercel</h4>
+        <p>
+          They are the company behind NextJS, providing great support for
+          hosting and distributing NextJS apps. They deploy your static site via
+          their global CDN close to your users. With NextJS and Vercel people
+          can see sub 50ms response times for your website.
+        </p>
+        <h4>Phoenix LiveView</h4>
+        <p>
+          Phoenix is the premier web framework for Elixir. It's fast, with
+          microsecond response times, has an intuitive programming model and is
+          the best fit for making dynamic server-side apps. LiveView takes this
+          up one notch by making the data transfer over a persistent WebSocket
+          connection which gives an SPA like experience.
+        </p>
+        <h4>Fly.io</h4>
+        <p>
+          Hosting static sites closer to people using CDNs is kind of easy. But
+          doing the same for dynamic server-side web apps is still a hard
+          problem. Fly.io streamlines running your apps close to people. It
+          supports databases, work well with Phoenix, has library support for
+          global databases and is comparatively cheap. Phoenix LiveView on
+          Fly.io is a killer combination, and with enough regions, it's
+          indistinguishable from a Single Page App.
+        </p>
+        <h2>Separating Static and Dynamic</h2>
+        <p>
+          I implemented this setup, not because of the obvious performance
+          benefits, but because I wanted to separate static pages like the home
+          page, privacy policy and dynamic content from the dynamic author
+          dashboard. Initially, all pages including the homepage were served
+          from the Phoenix app itself. This meant waste of server resources,
+          pages couldn't be reliably cached, and every small grammatical change
+          polluted the main application repo and needed a server restart.
+        </p>
+        <br />
+        <p>
+          I was fine with this until I wanted a blog, and that too as a
+          subdirectory for SEO reasons. That's when I decided to move the static
+          pages to a NextJS app that can be statically generated and serve the
+          remaining pages from the Phoenix app. That way we get the speed of
+          static sites, and the interactivity of Phoenix LiveView.
+        </p>
+      </section>
       <section>
         <h2>Domain Setup</h2>
 
