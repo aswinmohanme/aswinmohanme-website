@@ -42,7 +42,7 @@ html {
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Iosevka, system-ui, sans-serif;
+  font-family: Avenir, Arial, system-ui, sans-serif;
   /* 4 */
 }
 
@@ -436,7 +436,8 @@ body {
   text-align: justify;
   font-size: 1rem;
   line-height: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.625;
+  letter-spacing: 0.025em;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
@@ -468,6 +469,7 @@ h1, h2, h3, h4 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
 h1 {
@@ -494,7 +496,7 @@ code {
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  font-family: Iosevka, system-ui, sans-serif;
+  font-family: Avenir, Arial, system-ui, sans-serif;
 }
 
 *, ::before, ::after {
@@ -542,16 +544,16 @@ code {
   --tw-backdrop-sepia:  ;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .mt-4 {
   margin-top: 1rem;
 }
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mt-12 {
