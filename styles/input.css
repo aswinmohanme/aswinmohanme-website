@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply mx-auto max-w-2xl bg-stone-50 px-8 pt-12 pb-24 text-justify text-base leading-relaxed  text-gray-800;
+    @apply mx-auto max-w-2xl bg-stone-50 px-6 pt-12 pb-24 text-justify text-base leading-relaxed  text-gray-800;
   }
 
   a {
