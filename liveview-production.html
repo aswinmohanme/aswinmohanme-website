@@ -15,7 +15,9 @@
     />
   </head>
   <body>
-    <p>2022-03-23</p>
+    <p>
+      <a href="/">back to home</a>
+    </p>
     <h1 class="mt-12">Phoenix LiveView in Production</h1>
     <p>
       I came across a
@@ -26,6 +28,91 @@
       that highlighted how everyone was using LiveView in their production apps.
       Since IndiePaper is a Phoenix LiveView app, I thought it would be nice to
       share my experience with it.
+    </p>
+    <h2>Context</h2>
+    <p>
+      Before we jump right in, it's better to have some context about me and
+      about the project. I'm a single developer working on IndiePaper. It is a
+      book publishing platform, where authors can write out their book in an
+      online text editor and we typeset beautiful PDF books from it. The app is
+      a simple CRUD app with auth, uploads and a custom typesetting engine.
+    </p>
+    <br />
+    <p>
+      I used TDD to develop the app and it's deployed on
+      <a href="https://fly.io">fly.io</a>.
+    </p>
+    <h2>Why chose LiveView?</h2>
+    <p>
+      I wrote the first version of IndiePaper in Phoenix, but it was at a time
+      when I didn't know anything about the framework. I rewrote the entire app
+      in NextJS and Hasura, then in Rails, then using FaunaDB, then in LiveView
+      and finally in in vanilla Phoenix. This time around I knew enough Elixir
+      and Phoenix to actually make something useful. I was content with the full
+      page reloads and it was working well.
+    </p>
+    <br />
+    <p>
+      After some features was complete I wanted to add file uploads for book
+      promo images. Even though there were well built packages for handling
+      uploads, I was intrigued by the
+      <a href="https://www.youtube.com/watch?v=PffpT2eslH8"
+        >File Uploads in LiveView</a
+      >
+      video by Chris. I tried implementing it, but it didn't work out because I
+      didn't know anything about LiveView. So I bought
+      <a
+        href="http://pragprog.com/titles/liveview/programming-phoenix-liveview/"
+        >Programming Phoenix LiveView</a
+      >
+      and <a href="https://www.testingliveview.com/">Testing LiveView</a> and
+      started learning about it.
+    </p>
+    <br />
+    <p>
+      After a while I finished setting up the uploads feature. Then I converted
+      one more page just for the sake of it and was instantly hooked. I ended up
+      converting the entire app to Phoenix LiveView, including a complex
+      realtime editor. LiveView wasn't chosen, I used it, loved it and used it
+      again.
+    </p>
+    <h2>The Great Parts</h2>
+    <p>
+      For any tech to be adopted widely, it should be exponentially better than
+      it's predecessors and current competition (except if you're javascript).
+      Phoenix LiveView is a step up from everything that has come until now,
+      with great just enough abstractions and great developer experience.
+    </p>
+
+    <br />
+    <h4>Elixir Phoenix</h4>
+    <p>
+      Elixir and Phoenix is the best part about LiveView. Elixir is a recent
+      language and hence do not have the hairy legacy that older languages. It
+      has beautiful patterns, beautiful constructs and beautiful tools that make
+      working with it a beautiful experience. Phoenix as a framework is highly
+      performant even with small system configurations, and that sub 10ms
+      response time is a major factor why LiveView has a usable experience.
+    </p>
+    <br />
+    <h4>Testing</h4>
+    <p>
+      The second best thing I loved about LiveView is testing, especially
+      integration testing. I used to write integration tests with Wallaby which
+      ran the tests in a headless browser. This lead to slow and flaky tests,
+      even with parallel tests and error recovery. LiveView runs tests without
+      instantiating a browser. It handles clicks, redirects, and form events.
+      This leads to fast and stable tests.
+    </p>
+    <br />
+    <h4>SPA without SPA</h4>
+    <p>
+      This is the major selling point of LiveView and it holds that promise
+      well. Single Page Apps with a REST or GraphQL backend requires a lot of
+      extra code at the middle where the communication happens. With LiveView
+      your app acts with almost the same performance and UX of a well built SPA
+      without the need for API interfaces. You specify the data in the templates
+      and it does the rest.
     </p>
   </body>
 </html>
