@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply mx-auto max-w-2xl bg-stone-50 px-8 py-12 text-justify text-base leading-relaxed tracking-wide text-gray-800;
+    @apply mx-auto max-w-2xl bg-stone-50 px-8 pt-12 pb-24 text-justify text-base leading-relaxed tracking-wide text-gray-800;
   }
 
   a {
@@ -15,7 +15,7 @@
   h2,
   h3,
   h4 {
-    @apply mb-2 block bg-gray-200 px-2 uppercase tracking-wide;
+    @apply mb-2 block bg-gray-200 px-2;
   }
 
   h1 {
@@ -24,7 +24,7 @@
 
   h1,
   h2 {
-    @apply mt-12;
+    @apply mt-14 font-bold;
   }
 
   h3,

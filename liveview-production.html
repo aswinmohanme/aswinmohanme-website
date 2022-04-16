@@ -18,7 +18,7 @@
     <p>
       <a href="/">back to home</a>
     </p>
-    <h1 class="mt-12">Phoenix LiveView in Production</h1>
+    <h1>Phoenix LiveView in Production</h1>
     <p>
       I came across a
       <a
@@ -139,6 +139,59 @@
       filling a form, because on reconnection Phoenix restores the last known
       data. If you have a <code>handle_event</code> setup with your LiveView,
       the form state gets automatically synced with the server.
+    </p>
+    <h4>Free Websocket</h4>
+    <p>
+      You get a full functional bi-driectional websocket with good abstractions
+      for free. For the realtime text editor, rather than implementing a complex
+      system wiht Redis and syncing, I created a json diff and sent the data
+      through the websocket with <code>pushEvent</code> function.
+    </p>
+    <h2>The Bad Parts</h2>
+    <p>
+      Every technical choice has it's downsides, and LiveView is no exception.
+    </p>
+    <h4>Requires Internet Connection</h4>
+    <p>
+      LiveView requires an active internet connection to work properly. This
+      might not be an issue for 90% of people, but if you're domain requires
+      offline access, LiveView might not be a good fit. This might be a
+      temporary problem as work is being done to add more offline capabilities
+      to LiveView.
+    </p>
+    <h4>Almost Maturing Ecosystem</h4>
+    <p>
+      I hate to put this as a negative, but as LiveView is a young framework, it
+      has not many resources to learn from for beginners. Although the community
+      is small, it's really active and welcoming, so this won't be a problem for
+      long.
+    </p>
+    <h2>The Fuck This Parts</h2>
+    <p>
+      Gladly nothing yet. I love Phoenix LiveView, in almost 5 months with
+      LiveView I have never come across a scenario where I just put my hands up
+      and thought about switching to another framework.
+    </p>
+    <h2>The Hopeful Parts</h2>
+    <p>
+      Things I wish the LiveView ecosystem would have, but doesn't or shouldn't.
+    </p>
+    <h4>Mobile</h4>
+    <p>
+      It would be nice to have a way to run LiveView as a native app on mobile.
+      I recently made a React Native app with a Phoenix backend and I was put
+      off by the amount of middleware code I had to write to get the data and
+      display it. It would be great if we could write a LiveView app that
+      updated a React Native based mobile app.
+    </p>
+    <br />
+    <br />
+    <p>
+      This might sound like a hype post for LiveView, and it would be partially
+      true. I loved using Phoenix LiveView for IndiePaper and If I had to start
+      over again I would choose it again. It has it's shortcomings, sure, but it
+      has the least shortcomings of any framework I have used. Try it out, you
+      might surprise yourself.
     </p>
   </body>
 </html>

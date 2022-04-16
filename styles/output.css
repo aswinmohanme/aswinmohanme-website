@@ -432,7 +432,7 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 6rem;
   text-align: justify;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -468,8 +468,6 @@ h1, h2, h3, h4 {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
 }
 
 h1 {
@@ -478,7 +476,8 @@ h1 {
 }
 
 h1, h2 {
-  margin-top: 3rem;
+  margin-top: 3.5rem;
+  font-weight: 700;
 }
 
 h3, h4 {
@@ -554,10 +553,6 @@ code {
 
 .mt-2 {
   margin-top: 0.5rem;
-}
-
-.mt-12 {
-  margin-top: 3rem;
 }
 
 .flex {
