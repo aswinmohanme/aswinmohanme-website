@@ -194,13 +194,13 @@ let liveSocket = new LiveSocket(socketHost, Socket, {
           to be shared across subdomains on your <code>endpoint.ex</code> file.
         </p>
         <pre>
-  @session_options [
-    ...
-    domain: ".yourdomain.com"
-  ]
+@session_options [
+...
+domain: ".yourdomain.com"
+]
 
-  socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
-        </pre>
+socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]</pre
+        >
         <p>
           Remember to put the dot. It makes sure the cookies with your session
           information is shared.
@@ -211,13 +211,13 @@ let liveSocket = new LiveSocket(socketHost, Socket, {
           your requests are not rejected.
         </p>
         <pre>
-  config :your_app, YourAppWeb.Endpoint,
+config :your_app, YourAppWeb.Endpoint,
     url: [host: host, port: 443],
     check_origin: [
-      "https://#{host}",
-      "https://app.#{host}"
-  ],
-        </pre>
+        "https://#{host}",
+        "https://app.#{host}"
+    ],</pre
+        >
       </section>
       <section>
         <h2>Results</h2>
