@@ -18,6 +18,10 @@
     @apply mb-2 block bg-gray-200 px-2 uppercase;
   }
 
+  h1 {
+    @apply bg-yellow-300;
+  }
+
   h1,
   h2 {
     @apply mt-12;
