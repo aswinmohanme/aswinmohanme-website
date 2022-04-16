@@ -8,17 +8,21 @@
   }
 
   a {
-    @apply hover:bg-yellow-200 pr-1 rounded-md hover:pl-1 transition-all;
+    @apply border-b-2 border-yellow-400  hover:bg-yellow-200  hover:rounded-md hover:px-1 transition-all;
   }
 
   h1,
   h2,
   h3 {
-    @apply border-b-2 border-yellow-400 inline-block mb-2;
+    @apply border-yellow-400 inline-block mb-2;
   }
 
-  h2,
-  h3 {
+  h1,
+  h2 {
     @apply mt-12;
+  }
+
+  h3 {
+    @apply mt-8;
   }
 }
