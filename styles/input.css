@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply max-w-2xl mx-auto text-base px-8 text-gray-800 bg-stone-50 mt-12;
+  }
+
+  a {
+    @apply hover:bg-yellow-200 pr-1 rounded-md hover:pl-1 transition-all;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply border-b-2 border-yellow-400 inline-block;
+  }
+}

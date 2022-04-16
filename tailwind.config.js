@@ -1,7 +1,11 @@
 module.exports = {
   content: ["*.html"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['Iosevka', 'system-ui', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
