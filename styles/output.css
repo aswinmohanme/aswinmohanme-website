@@ -437,7 +437,6 @@ body {
   font-size: 1rem;
   line-height: 1.5rem;
   line-height: 1.625;
-  letter-spacing: 0.025em;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
@@ -468,6 +467,7 @@ h1, h2, h3, h4 {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  letter-spacing: 0.025em;
 }
 
 h1 {
