@@ -8,7 +8,7 @@
   }
 
   article {
-    @apply prose mt-12 prose-headings:text-lg prose-h2:mt-16 prose-h3:mt-6 prose-h3:text-base prose-h3:font-normal prose-h4:text-base prose-a:font-normal prose-a:text-gray-700 prose-a:no-underline;
+    @apply prose mt-12 max-w-none prose-headings:text-lg prose-h2:mt-16 prose-h3:mt-6 prose-h3:text-base prose-h3:font-normal prose-h4:text-base prose-a:font-normal prose-a:text-gray-700 prose-a:no-underline;
   }
 
   a {
