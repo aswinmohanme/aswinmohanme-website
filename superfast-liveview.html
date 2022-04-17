@@ -34,14 +34,14 @@
             >way</a
           >.
         </p>
-        <br />
+        
         <p>
           Making a fast web app is complex, It requires tuning a lot of moving
           parts. The technology that you chose has a measurable impact on
           performance. We chose these technologies because they optimize for and
           care about performance.
         </p>
-        <h4>NextJS</h4>
+        <h3>NextJS</h3>
         <p>
           It's a framework based on React, geared towards static and dynamic web
           apps. It has a lot of sane defaults and can get you a halfway decent
@@ -49,14 +49,14 @@
           optimized images, preloading routes, chunked downloads and dead code
           elimination that makes the user experience insanely fast.
         </p>
-        <h4>Vercel</h4>
+        <h3>Vercel</h3>
         <p>
           They are the company behind NextJS, providing great support for
           hosting and distributing NextJS apps. They deploy your static site via
           their global CDN close to your users. With NextJS and Vercel people
           can see sub 50ms response times for your website.
         </p>
-        <h4>Phoenix LiveView</h4>
+        <h3>Phoenix LiveView</h3>
         <p>
           Phoenix is the premier web framework for Elixir. It's fast, with
           microsecond response times, has an intuitive programming model and is
@@ -64,7 +64,7 @@
           up one notch by making the data transfer over a persistent WebSocket
           connection which gives an SPA like experience.
         </p>
-        <h4>Fly.io</h4>
+        <h3>Fly.io</h3>
         <p>
           Hosting static sites closer to people using CDNs is kind of easy. But
           doing the same for dynamic server-side web apps is still a hard
@@ -84,7 +84,7 @@
           pages couldn't be reliably cached, and every small grammatical change
           polluted the main application repo and needed a server restart.
         </p>
-        <br />
+        
         <p>
           I was fine with this until I wanted a blog, and that too as a
           subdirectory for SEO reasons. That's when I decided to move the static
@@ -100,14 +100,14 @@
           1. Point Domain Nameservers to Vercel (optional) This makes sure that
           all requests directly pass to Vercel, which improves performance.
         </p>
-        <br />
+        
         <p>
           2. Deploy NextJS app to Root Domain on Vercel Use the root domain
           <code>https://yourdomain.com</code> for deployment, and make sure to
           redirect <code>www.yourdomain.com</code> to it.
         </p>
 
-        <br />
+        
         <p>
           3. Deploy Phoenix LiveView to app subdomain on Fly.io Use fly.io and
           deploy the LiveView app to subdomain `app.yourdomain.com`. Point the
@@ -127,7 +127,7 @@
             >Rewrite Fallback</a
           >, that enable us to do just that.
         </p>
-        <br />
+        
         <p>
           When a request hits our NextJS app it checks if the NextJS app has
           that route. If it has, then it fulfils that request. If there is no
@@ -160,7 +160,7 @@ module.exports = {
           If you were using vanilla Phoenix apps, this was only necessary. But
           since we are using LiveView we need some additional setup.
         </p>
-        <h4>Websockets</h4>
+        <h3>Websockets</h3>
         <p>
           By default the LiveView WebSocket will be started in
           <code>wss://yourdomain.com/live</code>. But Vercel does not support
@@ -183,7 +183,7 @@ let liveSocket = new LiveSocket(socketHost, Socket, {
 ...
 }</pre
         >
-        <h4>Cookies</h4>
+        <h3>Cookies</h3>
         <p>
           Phoenix stores session information in cookies, which are sent along
           with every response. Since we are using the same domain as defined by
@@ -205,7 +205,7 @@ socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @se
           Remember to put the dot. It makes sure the cookies with your session
           information is shared.
         </p>
-        <h4>Check Origin</h4>
+        <h3>Check Origin</h3>
         <p>
           In <code>runtime.exs</code> file be sure to add both your domains so
           your requests are not rejected.
@@ -225,7 +225,7 @@ config :your_app, YourAppWeb.Endpoint,
           IndiePaper follows this architecture. You can check it out at
           <a href="https://indiepaper.me">https://indiepaper.me</a>
         </p>
-        <br />
+        
         <p>
           The root domain points to a configured
           <a href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
@@ -237,7 +237,7 @@ config :your_app, YourAppWeb.Endpoint,
           can edit blog posts add and remove pages, all without touching the
           main phoenix app.
         </p>
-        <br />
+        
         <p>
           Once the author signs up, the author is taken to
           <a href="https://indiepaper.me/dashboard"
@@ -251,7 +251,7 @@ config :your_app, YourAppWeb.Endpoint,
           >. The WebSocket directly connects to Fly.io without going through
           Vercel making the app navigation smooth and fast.
         </p>
-        <br />
+        
         <p>
           Seperating out your Static and Dynamic content is neccesary for SEO
           and marketing reasons. Splitting and hosting your app this way enables

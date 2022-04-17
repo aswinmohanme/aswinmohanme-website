@@ -3,10 +3,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Avenir', 'Arial', 'system-ui', 'sans-serif'],
-        'mono': ['Courier', 'monospace']
+        sans: ["Avenir", "Arial", "system-ui", "sans-serif"],
+        mono: ["Courier", "monospace"],
       },
     },
   },
-  plugins: [],
-}
+  plugins: [require("@tailwindcss/typography")],
+};

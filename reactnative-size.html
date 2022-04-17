@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>How I Reduced the Size of My React Native App by 86%</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="./styles/output.css"
+      type="text/css"
+      media="screen"
+    />
+  </head>
+  <body>
+    <p>
+      <a href="/">back to home</a>
+    </p>
+    <article class="prose">
+      <section>
+        <h1>How I Reduced the Size of My React Native App by 86%</h1>
+        <p>
+          I borrowed 25$ from my friend to start a Play Store Developer account
+          to put up my first app. I had already created the app, created the
+          assets and published it in the store. Nobody wants to download a todo
+          list app that costs 25mb of bandwidth and another 25 MB of storage
+          space.
+        </p>
+        <p>
+          So today I am going to share with you how I reduced the size of Tet
+          from 25 MB to around 3.5 MB.
+        </p>
+      </section>
+      <section>
+        <h3>Size Matters</h3>
+        <p>
+          Like any beginner, I wrote my app using Expo, the awesome React Native
+          platform that makes creating native apps a breeze. There is no native
+          setup, you write javascript and Expo builds the binaries for you.
+        </p>
+        <p>
+          I love everything about Expo except the size of the binaries. Each
+          binary weighs around 25 MB regardless of your app.
+        </p>
+        <p>
+          So the first thing I did was to migrate my existing Expo app to React
+          Native.
+        </p>
+      </section>
+      <section>
+        <h3>Migrating to React Native</h3>
+        <ul>
+          <li>
+            <code>react-native init</code> a new project with the same name
+          </li>
+          <li>Copy the source files over from Expo project</li>
+          <li>
+            Install all dependencies of the Expo project except Expo specific
+            libraries.
+          </li>
+          <li>Make neccesary adjustments to <code>app.json</code> file</li>
+          <li>Copy over your <code>.git</code> folder into the new project.</li>
+          <li>
+            Download the signing key of your Android app from Expo using
+            <code>exp fetch:android:keystore</code> and set it up
+          </li>
+          <li>Build and test your app</li>
+        </ul>
+        <p>
+          This reduces the size to around 7.5 MB, thin but we can go thinner.
+        </p>
+      </section>
+      <section>
+        <h3>Reducing size of React Native App (Android)</h3>
+        <p>This is what you have been waiting for, I know.</p>
+        <ul>
+          <li>Open up android/app/build.gradle</li>
+          <li>
+            Set def enableProguardInReleaseBuilds = true this would enable
+            Progaurd to compress the Java Bytecode. This reduces the app size by
+            a tad bit
+          </li>
+          <li>
+            Set def enableSeparateBuildPerCPUArchitecture = true . Android
+            devices support two major device artitectures armebi and x86. By
+            default RN builds the native librariers for both these artitectures
+            into the same apk.
+          </li>
+        </ul>
+      </section>
+    </article>
+  </body>
+</html>

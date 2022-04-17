@@ -7,37 +7,30 @@
     @apply mx-auto max-w-2xl bg-stone-50 px-6 pt-12 pb-24 text-justify text-base leading-relaxed  text-gray-800 subpixel-antialiased;
   }
 
+  article {
+    @apply prose mt-16 prose-a:font-normal prose-a:text-gray-700 prose-a:no-underline;
+  }
+
   a {
     @apply border-b-2 border-gray-400 transition-all  hover:rounded-md  hover:border-yellow-500 hover:bg-yellow-200 hover:px-1;
   }
 
   h1,
   h2,
-  h3,
-  h4 {
-    @apply mb-2 block bg-gray-200 px-2 tracking-wide;
+  h3 {
+    @apply block bg-gray-200 px-2;
   }
 
   h1 {
     @apply bg-yellow-300;
   }
 
-  h1,
-  h2 {
-    @apply mt-14 font-bold;
-  }
-
-  h3,
-  h4 {
-    @apply mt-8;
-  }
-
-  h4 {
+  h3 {
     @apply inline-block;
   }
 
   code {
-    @apply rounded-md border border-gray-400 px-2 font-sans;
+    @apply rounded-md border border-gray-400 px-2 font-sans font-normal;
   }
 
   pre {
