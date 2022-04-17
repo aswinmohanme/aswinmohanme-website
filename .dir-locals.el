@@ -1,1 +1,1 @@
-((nil . ((eval . (prettier-mode t)))))
+((web-mode . ((eval . (prettier-mode t)))))
