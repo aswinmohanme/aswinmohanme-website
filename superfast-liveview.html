@@ -96,24 +96,26 @@
       <section>
         <h2>Domain Setup</h2>
 
-        <p>
-          1. Point Domain Nameservers to Vercel (optional) This makes sure that
-          all requests directly pass to Vercel, which improves performance.
-        </p>
+        <ol>
+          <li>
+            Point Domain Nameservers to Vercel (optional) This makes sure that
+            all requests directly pass to Vercel, which improves performance.
+          </li>
 
-        <p>
-          2. Deploy NextJS app to Root Domain on Vercel Use the root domain
-          <code>https://yourdomain.com</code> for deployment, and make sure to
-          redirect <code>www.yourdomain.com</code> to it.
-        </p>
+          <li>
+            Deploy NextJS app to Root Domain on Vercel Use the root domain
+            <code>https://yourdomain.com</code> for deployment, and make sure to
+            redirect <code>www.yourdomain.com</code> to it.
+          </li>
 
-        <p>
-          3. Deploy Phoenix LiveView to app subdomain on Fly.io Use fly.io and
-          deploy the LiveView app to subdomain `app.yourdomain.com`. Point the
-          subdomain to the fly.io IP address and generate a certificate. Make
-          sure to set the <code>PHX_HOST</code> variable as the root domain
-          <code>https://yourdomain.com</code>.
-        </p>
+          <li>
+            Deploy Phoenix LiveView to app subdomain on Fly.io Use fly.io and
+            deploy the LiveView app to subdomain `app.yourdomain.com`. Point the
+            subdomain to the fly.io IP address and generate a certificate. Make
+            sure to set the <code>PHX_HOST</code> variable as the root domain
+            <code>https://yourdomain.com</code>.
+          </li>
+        </ol>
       </section>
       <section>
         <h2>Using Vercel as a Reverse Proxy</h2>
