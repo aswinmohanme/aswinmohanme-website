@@ -34,7 +34,7 @@
             >way</a
           >.
         </p>
-        
+
         <p>
           Making a fast web app is complex, It requires tuning a lot of moving
           parts. The technology that you chose has a measurable impact on
@@ -84,7 +84,7 @@
           pages couldn't be reliably cached, and every small grammatical change
           polluted the main application repo and needed a server restart.
         </p>
-        
+
         <p>
           I was fine with this until I wanted a blog, and that too as a
           subdirectory for SEO reasons. That's when I decided to move the static
@@ -100,14 +100,13 @@
           1. Point Domain Nameservers to Vercel (optional) This makes sure that
           all requests directly pass to Vercel, which improves performance.
         </p>
-        
+
         <p>
           2. Deploy NextJS app to Root Domain on Vercel Use the root domain
           <code>https://yourdomain.com</code> for deployment, and make sure to
           redirect <code>www.yourdomain.com</code> to it.
         </p>
 
-        
         <p>
           3. Deploy Phoenix LiveView to app subdomain on Fly.io Use fly.io and
           deploy the LiveView app to subdomain `app.yourdomain.com`. Point the
@@ -127,7 +126,7 @@
             >Rewrite Fallback</a
           >, that enable us to do just that.
         </p>
-        
+
         <p>
           When a request hits our NextJS app it checks if the NextJS app has
           that route. If it has, then it fulfils that request. If there is no
@@ -225,7 +224,7 @@ config :your_app, YourAppWeb.Endpoint,
           IndiePaper follows this architecture. You can check it out at
           <a href="https://indiepaper.me">https://indiepaper.me</a>
         </p>
-        
+
         <p>
           The root domain points to a configured
           <a href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
@@ -237,7 +236,7 @@ config :your_app, YourAppWeb.Endpoint,
           can edit blog posts add and remove pages, all without touching the
           main phoenix app.
         </p>
-        
+
         <p>
           Once the author signs up, the author is taken to
           <a href="https://indiepaper.me/dashboard"
@@ -251,7 +250,7 @@ config :your_app, YourAppWeb.Endpoint,
           >. The WebSocket directly connects to Fly.io without going through
           Vercel making the app navigation smooth and fast.
         </p>
-        
+
         <p>
           Seperating out your Static and Dynamic content is neccesary for SEO
           and marketing reasons. Splitting and hosting your app this way enables
