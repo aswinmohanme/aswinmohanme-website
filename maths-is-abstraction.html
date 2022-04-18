@@ -3,16 +3,96 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Untitled</title>
+    <title>Maths is an Abstraction</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- Place favicon.ico in the root directory -->
+    <link
+      rel="stylesheet"
+      href="./styles/output.css"
+      type="text/css"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+      integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB"
+      crossorigin="anonymous"
+    />
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+      integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+      integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script>
   </head>
   <body>
-    <!--
-           Math is an abstractino over the physical world. They are merely sumbols we can manipulate instead of real physical world.
-      -->
+    <header class="flex items-center justify-between">
+      <p><a href="/">back to home</a></p>
+      <p>2022-04-18</p>
+    </header>
+    <article>
+      <h1>Maths is an Abstraction</h1>
+      <p>
+        I have hated maths all through school. I used to love it, but then \(x\)
+        and \(y\) got introduced and nothing was the same anymore. I never
+        understood why maths was neccessary in real life, especially the ones
+        about cosines and sines. I learnt enough to pass through school and
+        college, but never loved the subject.
+      </p>
+      <p>
+        I rediscovered maths while casually watching
+        <a
+          href="https://www.youtube.com/watch?v=kjBOesZCoqc&list=PL0-GT3co4r2y2YErbmuJw2L5tW4Ew2O5B"
+          >3blue1brown on Youtube</a
+        >
+        and started to grasp the beauty of mathematics. Even though I am at a
+        point in my life where the understanding of maths does not transalate to
+        first order utility, I found a new love for the language. I am writing
+        this so I can appreciate the beauty of mathematics.
+      </p>
+      <section>
+        <h2>Maths is the Physical World on Paper</h2>
+        <p>
+          I have always been intrigued by one property of mathematics and
+          physics, how equaations and accurately predict physical outcomes and
+          how certian quantities relate so beautifully to each other.
+        </p>
+        <p>
+          Consider the famous equation \( E=mc^2 \). Everytime I used to derive
+          this in school, I used to be in awe on how symbols could have meaning
+          that could mesh together to get into this exact formula. We would
+          start out with the formula for one dimensional motion, and after some
+          derivations, integrations we would arrive at the formulat for making a
+          Nuclear Bomb. Even though this was fascinating enough, I never really
+          gave it any thought in school.
+        </p>
+        <p>
+          Everytime I would come across equations and numbers, mostly on
+          <a href="https://twitter.com/fermatslibrary">Fermats Library</a> that
+          remotely mirror this formula. I would always think how one formula
+          flows effortesly onto another, how and why is so beautiful. Equations
+          of motion can be dervied from one another, while making sense
+          therotically.
+        </p>
+        <p>
+          While during my zoning out in the middle of the day times I was
+          thinking about numbers and really wanted to know why exactly \(2+2 =
+          4\), and what is the deeper meaning of mathematics. I came to the
+          conclusion that \(2+2=4\) is so because \(4=2+2\).
+        </p>
+      </section>
+    </article>
   </body>
 </html>
