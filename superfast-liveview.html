@@ -155,8 +155,8 @@ module.exports = {
       ],
     }
   }
-} </pre
-        >
+}
+        </pre>
       </section>
       <section>
         <h2>Websockets and Cookies</h2>
@@ -185,8 +185,8 @@ const socketHost = `${liveHost}/live`
 
 let liveSocket = new LiveSocket(socketHost, Socket, {
 ...
-}</pre
-        >
+}
+        </pre>
         <h3>Cookies</h3>
         <p>
           Phoenix stores session information in cookies, which are sent along
@@ -203,8 +203,8 @@ let liveSocket = new LiveSocket(socketHost, Socket, {
 domain: ".yourdomain.com"
 ]
 
-socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]</pre
-        >
+socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
+        </pre>
         <p>
           Remember to put the dot. It makes sure the cookies with your session
           information is shared.
@@ -220,8 +220,8 @@ config :your_app, YourAppWeb.Endpoint,
     check_origin: [
         "https://#{host}",
         "https://app.#{host}"
-    ],</pre
-        >
+    ],
+        </pre>
       </section>
       <section>
         <h2>Results</h2>
