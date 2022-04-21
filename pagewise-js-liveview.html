@@ -55,62 +55,135 @@
           executed.
         </p>
 
-        <h3>Setup a Phoenix App</h3>
+        <h3>Starting point</h3>
         <p>
-          We are going to create a new LiveView app with two pages. We are
-          starting with everything bundled together, and later implement
-          splitting.
+          Consider that we have a LiveView app with two pages. One page is an
+          online text editor hence is Javascript heavy. Initially we are going
+          to have all the code be in the <code> app.js </code> file.
         </p>
-        <ul>
-          <li>
-            <p>Create a new Phoenix LiveView app</p>
-            <pre>
-$ mix phx.new page_wise
-
-$ cd page_wise
-$ mix ecto.setup</pre
-            >
-          </li>
-          <li>
-            <p>
-              Create a new JS file
-              <code>editor-page.js</code> in <code>/assets/js</code>
-            </p>
-            <pre>
-export function logToConsole(message) {
-  console.log(message)
-}</pre
-            >
-          </li>
-          <li>
-            <p>
-              Setup Hooks and new editor Javascript file in
-              <code> app.js </code>
-            </p>
-            <pre>
-import { logToConsole } from './editor-page';
+        <pre>
+import { Editor } from "@tiptap/core";
+import StarterKit from "@tiptap/starter-kit";
 
 ...
 
 let Hooks = {};
-Hooks.EditorHook = {
+Hooks.SimpleTipTapHtmlEditor = {
   mounted() {
-    logToConsole("HelloThere")
-  }
-}
+    const contentHTMLElementId = this.el.dataset.contentHtmlElementId;
+    const editorElementId = this.el.dataset.editorElementId;
 
+    window.tipTapHtmlEditor = new Editor({
+      element: editorElement,
+      content: contentHTMLElement.value,
+    };
+};
+
+let liveSocket = new LiveSocket(socketHost, Socket, {
+  params: { _csrf_token: csrfToken },
+  hooks: Hooks});
+        </pre>
+        <p>
+          This increases the size of the file. Even though the code is only
+          required in the editor page, it is downloaded on every page.
+        </p>
+
+        <h3>Refactor to Modules</h3>
+        <p>
+          First step is to extract the code for the editor to a new function,
+          export it from a new file <code> simple-editor.js </code> and include
+          that in <code>app.js</code>.
+        </p>
+        <pre>
+# simple-editor.js
+import { Editor } from "@tiptap/core";
+import StarterKit from "@tiptap/starter-kit";
+
+export function setupSimpleTipTapHtmlEditor(
+  contentHTMLElementId,
+  editorElementId
+) {
+  const contentHTMLElement = document.getElementById(contentHTMLElementId);
+  const editorElement = document.getElementById(editorElementId);
+
+  window.tipTapHtmlEditor = new Editor({
+    element: editorElement,
+    content: contentHTMLElement.value,
+  });
+}
+        </pre>
+        <h3>Setup Dynamic Import</h3>
+        <p>
+          Import that file in <code> app.js </code> and replace with the hook
+          with the dynamic function call, and remove the old imports from the
+          top.
+        </p>
+        <pre>
+# app.js
+let Hooks = {};
+Hooks.SimpleTipTapHtmlEditor = {
+  mounted() {
+    const contentHTMLElementId = this.el.dataset.contentHtmlElementId;
+    const editorElementId = this.el.dataset.editorElementId;
+
+    import("./simple-editor").then(
+      ({ setupSimpleTipTapHtmlEditor }) => {
+        setupSimpleTipTapHtmlEditor(contentHTMLElementId, editorElementId);
+      }
+    );
+  },
+};
+        </pre>
+        <p>
+          The <code> import </code> statement has a different promise based form
+          here. When the import is encountered, the chunk of code is fetched
+          dynamically and then executed. We need to enable
+        </p>
+
+        <h3>Setup Esbuild Chunking</h3>
+        <p>
+          When we enable Esbuild chunks, rather than bundling everything
+          together, Esbuild creates different <code> chunk </code> files.
+          Esbuild in Phoenix is configured with editing
+          <code> config/config.exs </code>
+        </p>
+        <pre>
+#config.exs
 ...
 
-let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken }, hooks: Hooks })</pre
-            >
-          </li>
-        </ul>
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.14.0",
+  default: [
+    args: ~w(js/app.js js/simple-editor.js
+        --chunk-names=chunks/[name]-[hash] --splitting --format=esm --bundle --target=es2017 --minify
+        --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
 
-        <h3>Setup code splitting</h3>
+        </pre>
         <p>
-          Esbuild is configured at <code>config.exs</code>. Enable code
-          splitting by
+          We have added the file <code> js/simple-editor.js </code> to list of
+          files, and added a set of options to enable splitting.
         </p>
+        <pre>
+--chunk-names=chunks/[name]-[hash] --splitting --format=esm --bundle --target=es2017 --minify
+        </pre>
+        <h3>Import as module</h3>
+        <p>
+          Finally you have to set the import of <code> app.js </code> in your
+          <code> root.html.heex </code> as module.
+        </p>
+        <pre>
+&lt;script type=&quot;module&quot; defer phx-track-static type=&quot;text/javascript&quot; src={Routes.static_path(@conn, &quot;/assets/app.js&quot;)}&gt;&lt;/script&gt;
+        </pre>
+      </section>
+      <section>
+        <h2>Conclusion</h2>
+      </section>
+      <section>
+        <h2>Extra bits</h2>
       </section>
     </article>
   </body>
