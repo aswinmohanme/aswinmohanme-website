@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>Page Specific Javascript with Phoenix LiveView and Esbuild</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="./styles/output.css"
+      type="text/css"
+      media="screen"
+    />
+  </head>
+  <body>
+    <header class="flex items-center justify-between">
+      <p><a href="/">back to home</a></p>
+      <p>2022-04-21</p>
+    </header>
+    <article>
+      <h1>Page Specific Javascript with Phoenix LiveView and Esbuild</h1>
+      <p>
+        Even though LiveView has a minimal Javascript footprint, custom JS code
+        for complex production apps can increase the size of the
+        <code> app.js </code> file since all javascript, including modules are
+        imported in the same file. This file is also included on every page
+        which leads uneccasary code being downloaded and executed.
+      </p>
+      <p>
+        I faced this issue when I was building IndiePaper. The editor page
+        required a lot of heavy packages, since I relied on Hooks there was no
+        way than to bundle everything up into the main file. This made
+        <code>app.js</code> around 1.4MB of Javascript which was included on all
+        pages. This post explains how to split the file and import the required
+        code, page wise.
+      </p>
+      <section>
+        <h2>Code Splitting and Dynamic Imports</h2>
+        <p>
+          Phoenix uses Esbuild to bundle assets. Bundling is the process of
+          taking code in separate modules and combining it into a single file,
+          minifying and converting to standard javascript in the process. This
+          is why your <code>app.js</code> increases in size when you import more
+          files. We can reduce the size by splitting the files based on the
+          pages that require it and dynamically load the required parts when
+          needed.
+        </p>
+        <p>
+          Rather than bundle everything into a single file, we instruct
+          <code>esbuild</code> to bundle every page as a separate chunk. When we
+          call the relevant Hook, the file gets automatically fetched and
+          executed.
+        </p>
+
+        <h3>Setup a Phoenix App</h3>
+        <p>
+          We are going to create a new LiveView app with two pages. We are
+          starting with everything bundled together, and later implement
+          splitting.
+        </p>
+        <ul>
+          <li>
+            <p>Create a new Phoenix LiveView app</p>
+            <pre>
+$ mix phx.new page_wise
+
+$ cd page_wise
+$ mix ecto.setup</pre
+            >
+          </li>
+          <li>
+            <p>
+              Create a new JS file
+              <code>editor-page.js</code> in <code>/assets/js</code>
+            </p>
+            <pre>
+export function logToConsole(message) {
+  console.log(message)
+}</pre
+            >
+          </li>
+          <li>
+            <p>
+              Setup Hooks and new editor Javascript file in
+              <code> app.js </code>
+            </p>
+            <pre>
+import { logToConsole } from './editor-page';
+
+...
+
+let Hooks = {};
+Hooks.EditorHook = {
+  mounted() {
+    logToConsole("HelloThere")
+  }
+}
+
+...
+
+let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken }, hooks: Hooks })</pre
+            >
+          </li>
+        </ul>
+
+        <h3>Setup code splitting</h3>
+        <p>
+          Esbuild is configured at <code>config.exs</code>. Enable code
+          splitting by
+        </p>
+      </section>
+    </article>
+  </body>
+</html>
