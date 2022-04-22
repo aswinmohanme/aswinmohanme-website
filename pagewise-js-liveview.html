@@ -180,17 +180,64 @@ config :esbuild,
         </pre>
       </section>
       <section>
-        <h2>Conclusion</h2>
-        <p>
-          With this setup, whenever you include a new Hook in a LiveView page,
-          the corresponding module gets dynamically imported.
-        </p>
-      </section>
-      <section>
         <h2>Extra bits</h2>
         <p>
           When you load JS files dynamically, there are some gotchas that you
           have to look out for.
+        </p>
+        <h3>Loading Delay</h3>
+        <p>
+          Dynamically loaded modules will only start fetching after
+          <code> app.js </code> file has started executing. This leads to a
+          slight delay, so it's better to inline critical parts in the file
+          itself.
+        </p>
+        <p>
+          If you prefer, you can show a loading indicator while the file is
+          being downloaded. The example setup requires you setup
+          <a href="https://alpinejs.dev/">AlpineJS</a> on your app. We declare
+          <code> isLoading </code> on the element where the hook is added and
+          set it to true. We use that Alpine variable to show a loading
+          indicator. We disable the loading indicator when we recieve an event
+          through <code> x-on:hook-loaded </code>
+        </p>
+        <pre>
+# Element where Hook is loaded
+&lt;div id=&quot;hook_element&quot;
+  phx-hook=&quot;SimpleHook&quot;
+  x-data=&quot;{isLoading: true}&quot;
+  x-on:hook-loaded=&quot;isLoading = false&quot;&gt;
+  &lt;p x-show=&quot;isLoading&quot;&gt;Loading Indicator&lt;/p&gt;
+  ...
+&lt;/div&gt;
+        </pre>
+        <p>
+          When mounting the Hook, we have to sent a
+          <code> hook-loaded </code> event to Alpine.
+        </p>
+        <pre>
+# simple-editor.js
+function sendEditorLoaded() {
+  let event = new CustomEvent("hook-loaded", {});
+  context.el.dispatchEvent(event);
+}
+
+export function setupSimpleTipTapHtmlEditor(
+  contentHTMLElementId,
+  editorElementId
+) {
+  ...
+
+  sendEditorLoaded();
+}
+        </pre>
+      </section>
+      <section>
+        <h2>Conclusion</h2>
+        <p>
+          With this setup, whenever you include a new Hook in a LiveView page,
+          the corresponding module gets dynamically imported. The modules are
+          chunked automatically and loaded on demand.
         </p>
       </section>
     </article>
