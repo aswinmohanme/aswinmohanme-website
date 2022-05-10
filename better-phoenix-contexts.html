@@ -39,8 +39,36 @@
         <li>How to Structure Contexts?</li>
         <li>Make them easy to change, because they will</li>
         <li>Test the Contexts</li>
+        <li>Umberlla Applications?</li>
         <li>Conclusion</li>
       </ul>
+      <p>
+        I came a from a rails background to Elixir and Phoenix. I was used to
+        writing code that accesed the models and the database directly in the
+        controller. After learning about the best practices of Fat Models and
+        Controllers, I switched to writing out the logic in models. When I first
+        came to learn Phoenix I found teh indirection of Contexts unappealing.
+        Why do we need to write out a function to access something when we could
+        directly call that.
+      </p>
+      <p>
+        I reluctantly used to write contexts. If wasn't until I read
+        <a
+          href="https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/"
+          >Designing Elixir Systems with OTP
+        </a>
+        that writing Elixir Apps with Contexts came clear to me.
+      </p>
+      <section>
+        <h2>Why do we need Contexts? or Phoenix is not your Application</h2>
+        <p>
+          When you generated a new project using Phoenix 1.3, you didn't have
+          the notion of contexts. You just had a top level web directory. You
+          wrote your code that accessed your databse most probably in your
+          controllers and that might have served you well when you were starting
+          out.
+        </p>
+      </section>
     </article>
   </body>
 </html>
