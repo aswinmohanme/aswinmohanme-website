@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>
+      How to Deploy your Phoenix LiveView 1.6 app on Digital Ocean with Docker
+    </title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="./styles/output.css"
+      type="text/css"
+      media="screen"
+    />
+    <script
+      defer
+      data-domain="aswinmohan.me"
+      data-api="/stats/api/event"
+      src="/stats/js/script.js"
+    ></script>
+  </head>
+  <body>
+    <header class="flex items-center justify-between">
+      <p><a href="/">back to home</a></p>
+      <p>2022-07-02</p>
+    </header>
+    <article>
+      <h1>
+        How to Deploy your Phoenix LiveView 1.6 app on Digital Ocean with Docker
+      </h1>
+      <p>
+        One of my clients had a requirement that the LiveView app that I was
+        building for them be hosted on Digital Ocean. I had never hosted an
+        entire app on Digital Ocean, although I had experience with Spaces an S3
+        alternative from Digital Ocean. Turns out, with the new App Platform it
+        is easy to wire up the github repo and deploy the app as a docker
+        container.
+      </p>
+      <p>
+        This post outlines the steps required to host your existing Phoenix
+        LiveView apps on the Digital Ocean App platform.
+      </p>
+      <h2>Setting up and Configuring Phoenix</h2>
+      <p>
+        Assuming you have a Phoenix 1.6 let's dockerize it and host it on the
+        <a href="https://www.digitalocean.com/products/app-platform"
+          >Digital Ocean App Platform</a
+        >. Phoenix 1.6 ships with a <code>phx.gen.release</code> mix task to
+        generate the files to dockerize the app, run migrations and start the
+        server.
+      </p>
+      <h3>0️⃣ Phoenix LiveView or Vanilla App</h3>
+      <p>
+        You should have an existing Phoenix 1.6 app. This guide works for both
+        Vanilla and Liveview based app.
+      </p>
+      <h3>1️⃣ Dockerize the application</h3>
+      <p>
+        In the root directory of the project run
+        <code>mix phx.gen.release --docker</code> which generates the required
+        files to dockerize the app.
+      </p>
+      <pre>
+* creating rel/overlays/bin/server
+* creating rel/overlays/bin/server.bat
+* creating rel/overlays/bin/migrate
+* creating rel/overlays/bin/migrate.bat
+* creating lib/digital_ocean_deploy/release.ex
+* creating Dockerfile
+* creating .dockerignore
+        </pre
+      >
+      <ul>
+        <li><code>server</code> : Starts the server in production</li>
+        <li>
+          <code>migrate</code> : Runs the database migrations in production
+        </li>
+        <li>
+          <code>release.ex</code> : Once the application is compiled and built
+          we won't have access to mix tasks on the server. This file includes
+          code to performs migrations and rollbacks on the database without
+          invoking mix. This function is called in the
+          <code> migrate </code> file.
+        </li>
+        <li>
+          <code> Dockerfile </code> : Dockerfile to build and deploy the app as
+          a container.
+        </li>
+        <li>
+          <code> .dockerignore </code> : Standard files to be ignored by docker.
+        </li>
+      </ul>
+      <h3>2️⃣ Configure SSL connection to Database</h3>
+      <p>
+        DigitalOcean only allows encrypted SSL connection between the
+        application and the database. Ecto supports SSL based connection , but
+        it is disabled out of the box.
+      </p>
+      <p>
+        Open up <code>runtime.exs</code>. This file contains the runtime
+        configuration of the language. Configuration here is not compiled into
+        the release.
+      </p>
+      <pre>
+maybe_ipv6 = if System.get_env("ECTO_IPV6"), do: [:inet6], else: []
+
+config :digital_ocean_deploy, DigitalOceanDeploy.Repo,
+  ssl: true,
+  url: database_url,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  socket_options: maybe_ipv6
+      </pre>
+      <p>
+        Uncomment <code>ssl: true</code>. If you have
+        <code>socket_options: [:inet6]</code> instead of the
+        <code>maybe_ipv6</code> shown here, you have to replace it with
+        <code>socket_options: [ ]</code>. Doing so makes Ecto connect to the
+        database through SSL.
+      </p>
+      <p>
+        Since connections to the database happen over SSL, we have to make sure
+        SSL is started in the migrate function. In the
+        <code> release.ex </code> file.
+      </p>
+      <pre>
+  defp load_app do
+    Application.ensure_all_started(:ssl)
+    Application.load(@app)
+  end
+      </pre>
+      <h3>3️⃣ Run Migrations before Server start</h3>
+      <p></p>
+      <h3>References</h3>
+      <ul>
+        <li>
+          <a
+            href="https://blog.miguelcoba.com/deploying-an-elixir-release-using-docker-on-digitalocean"
+          >
+            Deploying an Elixir Release using Docker on DigitalOcean
+          </a>
+        </li>
+      </ul>
+    </article>
+  </body>
+</html>
