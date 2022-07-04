@@ -12,7 +12,7 @@
 
     <link
       rel="stylesheet"
-      href="./styles/output.css"
+      href="../styles/output.css"
       type="text/css"
       media="screen"
     />
@@ -133,7 +133,49 @@ config :digital_ocean_deploy, DigitalOceanDeploy.Repo,
   end
       </pre>
       <h3>3️⃣ Run Migrations before Server start</h3>
-      <p></p>
+      <p>
+        In the current setup, we have to manually run the migration script after
+        pushing any updates to the server. This is tedious, error prone and
+        unneccessary. We will update the script to run the migration before
+        every server start.
+      </p>
+      <p>Replace the last line of <code>Dockerfile</code>.</p>
+      <pre>
+USER nobody
+
+CMD ["/app/bin/start"]
+      </pre>
+      <p>
+        Create a <code>start</code> script in
+        <code>rel/overlays/bin/start</code> to run the migration first and then
+        start the server.
+      </p>
+      <pre>
+#!/bin/sh
+cd -P -- "$(dirname -- "$0")"
+./migrate && ./server
+      </pre>
+      <p>Now make it executable with</p>
+      <pre>
+chmod +x rel/overlays/bin/start
+      </pre>
+      <h2>Setup Digital Ocean App</h2>
+      <p>
+        Now it's time to setup the server on Digital Ocean App platform. Unlike
+        bare metal servers, Apps are managed by Digital Ocean akin to Heroku. We
+        are going to create a new app that connects to our Github repo, builds
+        our app and releases a new version on every update.
+      </p>
+      <h3>4️⃣ Create a Github or Gitlab repo and upload your code</h3>
+      <p>
+        Upload your code to Github or Gitab. We are going to connect this repo
+        to Digital Ocean.
+      </p>
+      <h3>5️⃣ Create a new Digital Ocean App</h3>
+      <img
+        src="./create-app.jpg"
+        alt="Create a new app by clicking on Create, Apps link"
+      />
       <h3>References</h3>
       <ul>
         <li>
