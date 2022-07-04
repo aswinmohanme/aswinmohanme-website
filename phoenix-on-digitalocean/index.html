@@ -171,47 +171,110 @@ chmod +x rel/overlays/bin/start
         Upload your code to Github or Gitab. We are going to connect this repo
         to Digital Ocean.
       </p>
-      <h3>5️⃣ Create a new Digital Ocean App</h3>
-      <img
-        src="./create-app.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./manage-access.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./github-connect.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./all-repos.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./setup-autodeploy.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./add-db.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./attach-db.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./skip-env-vars.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./info.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
-      <img
-        src="./create-resource.jpg"
-        alt="Create a new app by clicking on Create, Apps link"
-      />
+      <h3>5️⃣ Create a new Digital Ocean App and deploy</h3>
+      <p>
+        Create a new app and link it to the repo we created in the last step.
+      </p>
+      <ul>
+        <li>
+          <p>
+            Go to
+            <a href="https://cloud.digitalocean.com/projects">Digital Ocean</a>
+            and click Apps button from the Create dropdown.
+          </p>
+          <img
+            src="./create-app.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+        <li>
+          <p>
+            Connect Github or Gitlab where you have hosted the repo.Give Digital
+            Ocean read access to the repo.
+          </p>
+          <img
+            src="./manage-access.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+          <img
+            src="./github-connect.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+        <li>
+          <p>
+            Set the branch which you want to build from. When building
+            production apps, I create two apps. One to deploy from the
+            <code>develop</code> branch for the staging environment, and
+            <code>master</code> for production. Make sure
+            <code>Autodeploy</code> is checked, so when you push to the repo the
+            app gets rebuilt automatically.
+          </p>
+          <img
+            src="./setup-autodeploy.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+        <li>
+          <p>
+            You can click the <code>Edit Plan</code> button to change the
+            pricing of the instance. If you're building a test system, you can
+            provision a smaller instance for $5.00. Click the
+            <code>Add Resource</code> button to create a database.
+          </p>
+          <img
+            src="./add-db.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+        <li>
+          <p>
+            Remember the name that you give your database, we'll need that
+            later. Create and Attach that database to our app.
+          </p>
+          <img
+            src="./attach-db.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+        <li>
+          <p>
+            We can skip configuring the Environment for now. This will cause our
+            first deployment to fail, but we'll fix it later. Click Next.
+          </p>
+          <img
+            src="./skip-env-vars.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+        <li>
+          <p>
+            You can change the region and the name of app here. Changing the
+            name changes the free subdomain Digital Ocean gives you. It's best
+            to host the app in the region closest to your users for best
+            performance.
+          </p>
+          <img
+            src="./info.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+        <li>
+          <p>
+            Once you have confirmed the cost of the app, click Create Resource.
+            Digital Ocean will then clone your repo and start building.
+          </p>
+          <img
+            src="./create-resource.jpg"
+            alt="Create a new app by clicking on Create, Apps link"
+          />
+        </li>
+      </ul>
+      <h3>6️⃣ Setup Environment</h3>
+      <p>
+        The deployment of our app will fail since we haven't setup the
+        Environment variables.
+      </p>
       <h3>References</h3>
       <ul>
         <li>
