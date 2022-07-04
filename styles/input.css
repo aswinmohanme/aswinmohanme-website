@@ -36,4 +36,8 @@
   pre {
     @apply mb-8 mt-4 rounded-lg border border-gray-400 p-4 pb-0 font-mono text-sm;
   }
+
+  img {
+    @apply border border-stone-200;
+  }
 }
