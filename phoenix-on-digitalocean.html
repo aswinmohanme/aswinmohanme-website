@@ -26,7 +26,7 @@
   <body>
     <header class="flex items-center justify-between">
       <p><a href="/">back to home</a></p>
-      <p>2022-07-02</p>
+      <p>2022-Jul-13</p>
     </header>
     <article>
       <h1>
@@ -272,9 +272,74 @@ chmod +x rel/overlays/bin/start
       </ul>
       <h3>6️⃣ Setup Environment</h3>
       <p>
-        The deployment of our app will fail since we haven't setup the
+        The first deployment of our app will fail since we haven't setup the
         Environment variables.
       </p>
+      <p>
+        Go to the settings page and click on the server component. Also note the
+        name of the database we have setup.
+      </p>
+      <img src="./assets/images/settings.jpg" alt="Settings page for the app" />
+      <p>
+        Scroll down to the Environment Variables section and click
+        <code>Edit</code>
+      </p>
+      <img
+        src="./assets/images/env-vars-empty.jpg"
+        alt="Settings page for the app"
+      />
+      <p>
+        For a LiveView app to function properly we need three environment
+        secrets that we need to provide.
+      </p>
+      <ul>
+        <li>
+          <code>SECRET_KEY_BASE</code> : Used by Phoenix to sign your assets.
+          Generate the value by running <code>mix phx.gen.secret</code> in the
+          root of your project.
+        </li>
+        <li>
+          <code>DATABASE_URL</code> : Used by Phoenix to communicate with the
+          database. Since we are provisioning a database with the app from
+          Digital Ocean itself, we can connect it through Digital Ocean. In the
+          values field add <code>${db.DATABASE_URL}</code> replacing
+          <code>db</code> with the name of your database.
+        </li>
+      </ul>
+      <p>Click Save and wait for the app to finish building.</p>
+      <img
+        src="./assets/images/env-vars-filled.jpg"
+        alt="Settings page for the app"
+      />
+      <p>
+        Once the App has finished buildling, it will be deployed with a Digitial
+        Ocean subdomain. You have to add that domain or your custom domain to
+        the <code>PHX_HOST</code> variable.
+      </p>
+      <img src="./assets/images/phx-host.jpg" alt="Settings page for the app" />
+      <p>
+        Without adding this, your LiveView Websocket will not be connected.
+        Adding a new variable will rebulid the site and redeploy it.
+      </p>
+      <h2>Wrapping Up</h2>
+      <p>
+        With Docker and managed platforms such as Digital Ocean it is really
+        easy to deploy your Phoenix app to the cloud easily.
+      </p>
+      <h3>Production Tips</h3>
+      <ul>
+        <li>
+          Upgrade Database to a Production version: Currently we are running a
+          development database with no backups and standby nodes. Digital Ocean
+          has managed Postgres databases.
+        </li>
+        <li>
+          Setup a Staging Environment: Create an identical app, but deploy it
+          from the <code>develop</code> branch to have a staging environment.
+          Keep <code>master</code> as the branch that holds the production code.
+        </li>
+      </ul>
+      <p>Happy Deploying.</p>
       <h3>References</h3>
       <ul>
         <li>
