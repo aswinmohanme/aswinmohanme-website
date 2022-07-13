@@ -4,7 +4,8 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
-    "dev": "concurrently \"http-server . -c-1\" \"npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch --minify\""
+    "dev": "concurrently \"http-server . -c-1\" \"npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch --minify\"",
+    "build": "echo \"Build successful\""
   },
   "keywords": [],
   "author": "",
