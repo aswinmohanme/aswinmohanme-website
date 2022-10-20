@@ -12,7 +12,7 @@
   }
 
   a {
-    @apply border-b-2 border-gray-400 transition-all  hover:rounded-md  hover:border-yellow-500 hover:bg-yellow-200 hover:px-1;
+    @apply text-blue-700;
   }
 
   h1,
