@@ -8,7 +8,7 @@
   }
 
   article {
-    @apply prose mt-12 max-w-none prose-headings:text-lg prose-h2:mt-12 prose-h3:mt-6 prose-h3:text-base prose-h3:font-normal prose-h4:text-base prose-a:font-normal prose-a:text-gray-700 prose-a:no-underline prose-pre:bg-stone-100 prose-pre:text-gray-700;
+    @apply prose mt-12 max-w-none prose-headings:text-lg prose-h2:mt-12 prose-h3:mt-6 prose-h3:text-base prose-h3:font-normal prose-h4:text-base prose-a:font-normal prose-a:text-gray-700 prose-a:no-underline prose-pre:rounded-none prose-pre:bg-stone-100 prose-pre:text-gray-700;
   }
 
   a {
@@ -30,11 +30,11 @@
   }
 
   code {
-    @apply rounded-md border border-gray-400 px-2 font-sans font-normal;
+    @apply border border-gray-300 px-2 font-sans font-normal;
   }
 
   pre {
-    @apply mb-8 mt-4 rounded-lg border border-gray-400 p-4 pb-0 font-mono text-sm;
+    @apply mb-8 mt-4 border-gray-400 p-4 pb-0 font-mono text-sm;
   }
 
   img {
