@@ -8,16 +8,6 @@
       "permanent": true
     },
     {
-      "source": "/posts/superfast-vercel-liveview-fly/",
-      "destination": "/superfast-liveview",
-      "permanent": true
-    },
-    {
-      "source": "/posts/better-fonts-on-linux/",
-      "destination": "/better-fonts-on-linux",
-      "permanent": true
-    },
-    {
       "source": "/posts/better-fonts-on-linux",
       "destination": "/better-fonts-on-linux",
       "permanent": true
